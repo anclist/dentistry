@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @appointments = current_user.appointments.all
+    @appointments = current_user.appointments.order(created_at: :desc)
   end
 
   def new

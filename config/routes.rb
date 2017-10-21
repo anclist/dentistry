@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :appointments
 
   namespace :admin do
-    resources :appointments, only: [:index]
+    resources :appointments, only: [:index] do
+      member do
+        post :confirm
+      end
+    end
   end
 end
