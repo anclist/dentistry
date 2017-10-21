@@ -16,13 +16,15 @@ ActiveRecord::Schema.define(version: 20171021142711) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "dentist_id"
-    t.datetime "appointment_at"
-    t.string "status"
-    t.string "notes"
+    t.integer "user_id", null: false
+    t.integer "dentist_id", null: false
+    t.datetime "appointment_at", null: false
+    t.string "status", default: "pending", null: false
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["dentist_id"], name: "index_appointments_on_dentist_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "dentists", force: :cascade do |t|
