@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   validates :name, :email, :phone,  presence: true
   validates :email, uniqueness: true
+  validates :phone, format: {
+    with: /\A\d{10}\z/,
+    message: 'must be in format 1234567890'
+  }
 end

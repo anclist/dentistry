@@ -3,7 +3,7 @@
 <ul>
   <% @appointments.each do |appointment| %>
   <li>
-    <%= appointment.appointment_at %> with <%= appointment.dentist.name %>
+    <%= appointment.appointment_at.strftime("%a, %v at %I:%M %p") %> with <%= appointment.dentist.name %>
     <br>
     <small>Status:  <%= appointment.status %> </small>
     <br>

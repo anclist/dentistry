@@ -9,7 +9,7 @@ class Appointment < ApplicationRecord
     client.api.account.messages.create(
       from: ENV['PHONE_NUMBER'],
       to: "+1#{self.user.phone}",
-      body: "You have an appt on #{self.appointment_at} with #{self.dentist.name}"
+      body: "You have an appointment on #{self.appointment_at.strftime("%a, %v at %I:%M %p")} with #{self.dentist.name}"
     )
   end
 
